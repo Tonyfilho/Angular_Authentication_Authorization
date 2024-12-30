@@ -65,12 +65,13 @@
               "buildTarget": "Auth:build:production"
             },
             "development": {
-              "buildTarget": "Auth:build:development"
+              "buildTarget": "Auth:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "proxy.conf.json"
+            "proxyConfig": "src/proxy.conf.json"
           }
         },
         "extract-i18n": {
