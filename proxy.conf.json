@@ -1,0 +1,13 @@
+{
+    "/api": {
+        "target": "https://api.realworld.io",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+          
+        }
+      }
+  }
+  

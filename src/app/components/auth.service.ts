@@ -1,22 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { IUser } from '../share/user';
-import { Observable } from 'rxjs';
-import { ILogin } from '../share/login';
+import { inject, Injectable } from '@angular/core';
 
-const POSTREGISTER = 'https://api.realworld.io/api/users';
-const POSTLOGIN = 'https://api.realworld.io/api/users/login';
+import { Observable } from 'rxjs';
+import { IUserAutenticated, IUserLogin, IUserRegistration } from '../share/shareInterfaces';
+
+
+
+const REGISTER = 'https://api.realworld.io/api/users';
+const LOGIN = 'https://api.realworld.io/api/users/login';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
   constructor(private http: HttpClient) {}
 
-  register = (register: IUser): Observable<{user: IUser}> => {
-    return this.http.post<{ user: IUser }>(POSTREGISTER, { user: register });
+
+  register = (register: IUserRegistration): Observable<{user: IUserAutenticated}> => {    
+    return this.http.post<{ user: IUserAutenticated }>(REGISTER, { user: register });
   };
-  login = (user: ILogin): Observable<ILogin> => {
-    return this.http.post<ILogin>(POSTLOGIN, { user });
+
+  login = (user: IUserLogin): Observable<IUserLogin> => {
+    return this.http.post<IUserLogin>(LOGIN, { user });
   };
 }
