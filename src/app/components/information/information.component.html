@@ -1,0 +1,35 @@
+<div class="information-container d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow-lg p-4" style="max-width: 800px;">
+      <div class="card-body">
+        <h1 class="card-title text-center mb-4">What Happens After Authentication?</h1>
+        <p class="card-text">
+          Once a user successfully authenticates with the <strong>RealWorld API</strong>, the server generates a 
+          <strong>JWT (JSON Web Token)</strong> and sends it back to the client. This token is essential for maintaining 
+          secure communication between the client and the server during the user's session.
+        </p>
+        <h2 class="h5 mt-3">Key Processes After Authentication:</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Token Storage:</strong> The JWT is stored securely on the client side, typically in local storage or session storage.
+          </li>
+          <li class="list-group-item">
+            <strong>Authorization Headers:</strong> For subsequent API requests, the client includes the JWT in the Authorization header using the format: <code>Bearer &lt;token&gt;</code>.
+          </li>
+          <li class="list-group-item">
+            <strong>Access Control:</strong> The server validates the JWT to ensure the user is authenticated before granting access to protected resources.
+          </li>
+          <li class="list-group-item">
+            <strong>Session Validity:</strong> JWTs have an expiration time. When expired, the user is logged out or prompted to re-authenticate.
+          </li>
+        </ul>
+        <p class="card-text mt-4">
+          This process ensures that users can access the application's features securely and that unauthorized access is effectively prevented. 
+          By leveraging the RealWorld API and JWT, developers can create modern and secure web applications with ease.
+        </p>
+        <p class="text-center mt-3">
+          Learn more about <a href="https://realworld-docs.netlify.app/" target="_blank" class="text-primary">RealWorld API</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+  

@@ -1,25 +1,36 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { IUserAutenticated, IUserLogin, IUserRegistration } from '../share/shareInterfaces';
-
-
+import { Observable, tap } from 'rxjs';
+import {
+  IUserAutenticated,
+  IUserLogin,
+  IUserRegistration,
+} from '../share/shareInterfaces';
 
 const REGISTER = 'https://api.realworld.io/api/users';
 const LOGIN = 'https://api.realworld.io/api/users/login';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  /**temos 3 diferentes estado, undefine: não existe, null: não logado e User: logado, esta variaval noticará a aplicação em qualquer lugar, assim q houve mudanças */
+  currentUserSig = signal<IUserAutenticated | undefined | null>(undefined);
 
   constructor(private http: HttpClient) {}
 
-
-  register = (register: IUserRegistration): Observable<{user: IUserAutenticated}> => {    
-    return this.http.post<{ user: IUserAutenticated }>(REGISTER, { user: register });
+  register = (
+    register: IUserRegistration
+  ): Observable<{ user: IUserAutenticated }> => {
+    return this.http
+      .post<{ user: IUserAutenticated }>(REGISTER, { user: register })
+      .pipe(
+        tap((res) => {
+          localStorage.setItem('token', res.user.token);
+          return this.currentUserSig.set(res.user);
+        })
+      );
   };
 
   login = (user: IUserLogin): Observable<IUserLogin> => {
