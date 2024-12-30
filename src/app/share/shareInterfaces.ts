@@ -1,7 +1,7 @@
 export interface IUserLogin {
   user: {
     email: string;
-    username: string;
+    password: string;
   };
 }
 export interface IUserRegistration {

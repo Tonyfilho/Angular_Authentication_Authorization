@@ -1,7 +1,7 @@
 <div class="information-container d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="card shadow-lg p-4" style="max-width: 800px;">
       <div class="card-body">
-        <h1 class="card-title text-center mb-4">What Happens After Authentication?</h1>
+        <h1 class="card-title text-center mb-4">Hello {{ this.authService.currentUserSig()?.username }}. What Happens After Authentication?</h1>
         <p class="card-text">
           Once a user successfully authenticates with the <strong>RealWorld API</strong>, the server generates a 
           <strong>JWT (JSON Web Token)</strong> and sends it back to the client. This token is essential for maintaining 

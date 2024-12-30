@@ -10,6 +10,7 @@ import {
 
 const REGISTER = 'https://api.realworld.io/api/users';
 const LOGIN = 'https://api.realworld.io/api/users/login';
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class AuthService {
     register: IUserRegistration
   ): Observable<{ user: IUserAutenticated }> => {
     return this.http
-      .post<{ user: IUserAutenticated }>(REGISTER, { user: register })
+      .post<{ user: IUserAutenticated }>(CORS_URL+REGISTER, { user: register })
       .pipe(
         tap((res) => {
           localStorage.setItem('token', res.user.token);
@@ -34,6 +35,6 @@ export class AuthService {
   };
 
   login = (user: IUserLogin): Observable<IUserLogin> => {
-    return this.http.post<IUserLogin>(LOGIN, { user });
+    return this.http.post<IUserLogin>(CORS_URL+LOGIN,  user );
   };
 }
