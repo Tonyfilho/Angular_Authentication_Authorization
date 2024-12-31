@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 import { Observable, tap } from 'rxjs';
 import {
@@ -10,7 +10,8 @@ import {
 
 const REGISTER = 'https://api.realworld.io/api/users';
 const LOGIN = 'https://api.realworld.io/api/users/login';
-const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
+const GETUSER = 'https://api.realworld.io/api/user';
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/' /**Não funciona bem */
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class AuthService {
     register: IUserRegistration
   ): Observable<{ user: IUserAutenticated }> => {
     return this.http
-      .post<{ user: IUserAutenticated }>(CORS_URL+REGISTER, { user: register })
+      .post<{ user: IUserAutenticated }>(REGISTER, { user: register })
       .pipe(
         tap((res) => {
           localStorage.setItem('token', res.user.token);
@@ -35,6 +36,10 @@ export class AuthService {
   };
 
   login = (user: IUserLogin): Observable<IUserLogin> => {
-    return this.http.post<IUserLogin>(CORS_URL+LOGIN,  user );
+    return this.http.post<IUserLogin>(LOGIN,  user );
   };
+
+  getUser = () =>  {
+    return this.http.get<{user: IUserAutenticated}>(GETUSER);
+  }
 }

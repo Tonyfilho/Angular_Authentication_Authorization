@@ -1,4 +1,20 @@
+## What we are going create
+Login, register, about, header, information, main and foot  components.
+Create a Server with methods Register, Login, GetUser and a signal variable currentUserSig to salve data after register or login or logout.
+Save token in LocalStorage, and set Signal Var with user.
+Hiden Link in Header.html with Signal Var and create a Logout Method in this component.
+Render data from Signal Var in information.html.
+Use the method getUser in App Component.
+Create a Auth Interceptor
+
+Created Register.
+
+Create a Login
+
+
 # Auth
+
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
