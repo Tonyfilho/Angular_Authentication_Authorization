@@ -1,15 +1,15 @@
 ## What we are going create
 Login, register, about, header, information, main and foot  components.
 Create a Server with methods Register, Login, GetUser and a signal variable currentUserSig to salve data after register or login or logout.
+Created Register.
+Create a Login.
 Save token in LocalStorage, and set Signal Var with user.
 Hiden Link in Header.html with Signal Var and create a Logout Method in this component.
 Render data from Signal Var in information.html.
 Use the method getUser in App Component.
-Create a Auth Interceptor
+Create a Auth Interceptor e call him in the ApplicationConfig into provideHttpClient().
+In AppComponent we must set the currentUserSig null.
 
-Created Register.
-
-Create a Login
 
 
 # Auth

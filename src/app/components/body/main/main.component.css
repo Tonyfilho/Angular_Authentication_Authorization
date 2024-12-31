@@ -1,5 +1,6 @@
 .main-container {
-    height: 85vh;
+    min-height: 85vh;
+    width: 100%;
     padding: 20px;
     display: flex;
     justify-content: center;

@@ -1,5 +1,7 @@
 .about-container {
     height: 85vh;
+    width: 80vw;
+    margin-top: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
